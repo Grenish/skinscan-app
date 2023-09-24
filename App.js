@@ -7,8 +7,10 @@ import {
   TouchableOpacity,
   Animated,
   Easing,
+  StatusBar,
 } from "react-native";
 import { skinscanLogo, camera, gallery, settings } from "./assets";
+import { ActionButton, WelcomeScreen, SettingsButton } from "./components";
 
 export default function App() {
   const [bottomCircleVisible, setBottomCircleVisible] = useState(true);
@@ -43,32 +45,20 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Image source={skinscanLogo} style={styles.imageSizer} />
-      <Text style={styles.logoText}>A doctor for your skin</Text>
+      <StatusBar backgroundColor="#6A7FDB" barStyle="light-content" />
+      <WelcomeScreen />
 
-      <View style={styles.marginTop}>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>
-            <Image source={camera} style={styles.logoFixer} />
-            {""} Open Camera
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>
-            <Image source={gallery} /> {""} Upload Image
-          </Text>
-        </TouchableOpacity>
-      </View>
-      <TouchableOpacity
-        style={styles.settingsButton}
-        onPress={toggleBottomCircle}
-      >
-        <Image source={settings} style={styles.settingsIcon} />
-      </TouchableOpacity>
+
+     
+
+      <ActionButton />
 
       <Animated.View style={[styles.bottomCircle, animatedBottomCircleStyle]} />
       <View style={styles.bottomCircle2}></View>
       <View style={styles.bottomCircle3}></View>
+
+      
+      <SettingsButton onPress={toggleBottomCircle} /> 
     </View>
   );
 }
